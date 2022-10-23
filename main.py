@@ -1,9 +1,9 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, create_engine, Table
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, sessionmaker
 
 
-engine = create_engine('sqlite:///data/parduotuves.db')
+engine = create_engine('sqlite:///data/parduotuves3.db')
 Base = declarative_base()
 
 association_table = Table('association', Base.metadata, 
@@ -38,9 +38,7 @@ class Product(Base):
     def __repr__(self):
         return f"Product {self.name}"
 
-
 if __name__ == "__main__":
-    # Base.metadata.drop_all(engine)
-    Base.metadata.create_all(engine)
+    Base.metadata.drop_all(engine)
 
-    
+    session=sessionmaker()(bind=engine)
