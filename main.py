@@ -1,7 +1,7 @@
 import os
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine, Column, Integer, String, Table, ForeignKey
-
+from sqlalchemy.orm import relationship
 
 BASE_DIR=os.path.dirname(os.path.realpath(__file__))
 
@@ -37,6 +37,9 @@ class Customer(Base):
     __table__ = 'customers'
     id = Column(Integer(), primary_key = True)
     name = Column(String(), nullable= False)
+    products = relationship('Product',secondary=association_table
+        back_populates='customers'
+    )
 
     def __repr__(self):
         return f"<Customer {self.name}>"
@@ -46,6 +49,10 @@ class Product(Base):
     id = Column(Integer(), primary_key = True)
     name= Column(String(), nullable = False)
     price = Column(String(), nullable= False)
-
+    customers = relationship(
+        'Customer',
+        secondary = association_table,
+        back_populates = 'products'
+    )
     def __repr__(self):
         return f"<Product {self.name}>"
