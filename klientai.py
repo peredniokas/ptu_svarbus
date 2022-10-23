@@ -5,6 +5,7 @@ from main import session,Product,Customer
 #customer3 = Customer(name = "customer 3")
 customer=session.query(Customer).filter(Customer.id==1).first()
 customer2=session.query(Customer).filter(Customer.id==2).first()
+customer3=session.query(Customer).filter(Customer.id==3).first()
 
 product = Product(name = "bananai", price = 3)
 product2 = Product(name = "apelsinai", price = 2)
