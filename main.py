@@ -3,10 +3,10 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker
 
 
-engine = create_engine('sqlite:///data/parduotuves3.db')
+engine = create_engine('sqlite:///data/parduotuve.db')
 Base = declarative_base()
 
-association_table = Table('association', Base.metadata, 
+association_table = Table('customer_product', Base.metadata, 
     Column('customer_id', Integer, ForeignKey("customers.id")),
     Column('product_id', Integer, ForeignKey("products.id")),
 )
@@ -38,7 +38,9 @@ class Product(Base):
     def __repr__(self):
         return f"Product {self.name}"
 
-if __name__ == "__main__":
-    Base.metadata.drop_all(engine)
+if __name__=="__main__":
+    #Base.metadata.drop_all(engine)
+    Base.metadata.create_all(engine)
 
-    session=sessionmaker()(bind=engine)
+session=sessionmaker()(bind=engine)
+
