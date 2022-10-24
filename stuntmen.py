@@ -1,13 +1,13 @@
-from collections import UserList
-from tkinter.tix import COLUMN
 from sqlalchemy import Column, String, Integer, Boolean, ForeignKey
 from sqlalchemy.orm import relationship, backref
 
 from base import Base
 
+
 class Stuntman(Base):
     __tablename__ = 'stuntmen'
-    id = Column(String)
+
+    id = Column(Integer, primary_key=True)
     name = Column(String)
     active = Column(Boolean)
     actor_id = Column(Integer, ForeignKey('actors.id'))

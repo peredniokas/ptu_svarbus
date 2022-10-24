@@ -1,13 +1,13 @@
 import string
-from sqlalchemy import column, String, Integer, Date
+from sqlalchemy import Column, String, Integer, Date
 
 from base import Base
 
 class Actor(Base):
     __tablename__ = 'actors'
-    id = column(Integer, primary_key=True)
-    name = column(String)
-    birthday = column(Date)
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    birthday = Column(Date)
 
     def __init__(self, name, birthday):
         self.name = name
