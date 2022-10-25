@@ -1,11 +1,12 @@
-# coding=utf-8
 
-# 1 - imports
+
+
 from datetime import date
 from actor import Actor
 from base import Session
 from contact_details import ContactDetails
 from movie import Movie
+from stuntmen import Stuntman
 
 # 2 - extract a session
 session = Session()
@@ -29,14 +30,14 @@ for movie in movies:
 print('')
 
 # 6 - movies that Dwayne Johnson participated
-the_rock_movies = session.query(Movie) \
+dwayne_movies = session.query(Movie) \
     .join(Actor, Movie.actors) \
     .filter(Actor.name == 'Dwayne Johnson') \
     .all()
 
 print('### Dwayne Johnson movies:')
-for movie in the_rock_movies:
-    print(f'The Rock starred in {movie.title}')
+for movie in dwayne_movies:
+    print(f'Dwayne starred in {movie.title}')
 print('')
 
 # 7 - get actors that have house in Glendale
