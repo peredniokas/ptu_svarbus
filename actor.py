@@ -1,4 +1,3 @@
-import string
 from sqlalchemy import Column, String, Integer, Date
 
 from base import Base
