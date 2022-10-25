@@ -6,7 +6,7 @@ from actor import Actor
 from base import Session
 from contact_details import ContactDetails
 from movie import Movie
-from stuntmen import Stuntman
+
 
 # 2 - extract a session
 session = Session()
